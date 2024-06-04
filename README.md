@@ -1,5 +1,7 @@
 # E-commerce Price Service
 
+A small service for applicable price queries, with Java, Spring Boot, following Clean Architecture principles. 
+
 ## Getting Started
 
 Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
