@@ -1,0 +1,75 @@
+openapi: 3.0.0
+info:
+  title: E-commerce Price Service API
+  description: API documentation for the E-commerce Price Service
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+paths:
+  /api/prices:
+    get:
+      description: Get applicable price for a product, given its brand and an application date as inputs.
+      summary: Get applicable price
+      tags:
+        - Price Controller
+      parameters:
+        - name: date
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+          description: Date for which the price is needed
+          default: '2020-06-14T10:00:00'
+        - name: product
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Product code identifier
+          default: '3090/470'
+        - name: brand
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Brand name
+          default: 'ZARA'
+      responses:
+        '200':
+          description: Found the price
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicablePriceResponseDTO'
+        '400':
+          description: Invalid input
+        '404':
+          description: Price not found for the brand, product and date of application passed as parameters.
+components:
+  schemas:
+    ApplicablePriceResponseDTO:
+      type: object
+      properties:
+        brand:
+          type: string
+        startDate:
+          type: string
+          format: date-time
+        endDate:
+          type: string
+          format: date-time
+        priceListName:
+          type: string
+        product:
+          $ref: '#/components/schemas/ProductDTO'
+        price:
+          type: number
+          format: double
+    ProductDTO:
+      type: object
+      properties:
+        name:
+          type: string
+        code:
+          type: string
