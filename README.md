@@ -7,8 +7,7 @@ Follow these instructions to get a copy of the project up and running on your lo
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/ecommerce-price-service.git
-cd ecommerce-price-service
+git clone https://github.com/rcalaglez/prices-spring-boot-clean-arch.git
 ```
 
 ### Build the project
